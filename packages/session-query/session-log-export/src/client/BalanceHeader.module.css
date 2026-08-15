@@ -1,0 +1,35 @@
+.balanceButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  min-width: 111px;
+  padding: 6px 12px;
+  gap: 6px;
+  border: 1px solid var(--dsw-alias-border-l2);
+  border-radius: 18px;
+  color: var(--dsw-alias-label-primary);
+  background: transparent;
+  font-family: var(--dsw-font-family);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.balanceButton:hover {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.status {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--dsw-alias-label-secondary);
+}
+
+.status[data-available='false'] {
+  background: var(--dsw-alias-label-dimmed);
+}

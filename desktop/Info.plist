@@ -5,6 +5,7 @@
   <key>CFBundleDisplayName</key><string>DeepSeek Harness</string>
   <key>CFBundleExecutable</key><string>DeepSeekHarness</string>
   <key>CFBundleIdentifier</key><string>ai.deepseek.harness.desktop</string>
+  <key>CFBundleIconFile</key><string>AppIcon</string>
   <key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
   <key>CFBundleName</key><string>DeepSeek Harness</string>
   <key>CFBundlePackageType</key><string>APPL</string>

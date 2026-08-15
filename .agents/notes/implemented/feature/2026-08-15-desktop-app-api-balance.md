@@ -10,7 +10,7 @@ DeepSeek Harness was distributed as a command-line-launched web application. Des
 
 ## Decision
 
-The repository ships a macOS desktop wrapper in `desktop/`. It embeds a compressed Node.js runtime, expands that runtime into the application's private support directory on first launch, starts the production Harness server on a random loopback-only port, and displays the existing web client in `WKWebView`. `desktop/build-app.sh` builds, prunes, signs, and rejects an application larger than 200 MiB.
+The repository ships a macOS desktop wrapper in `desktop/`. It embeds a compressed Node.js runtime, expands that runtime into the application's private support directory on first launch, starts the production Harness server on a random loopback-only port, and displays the existing web client in `WKWebView`. An original high-resolution icon is stored as a PNG master and a macOS ICNS asset. `desktop/build-app.sh` copies the icon, builds, prunes, signs, and rejects an application larger than 200 MiB.
 
 The wrapper supplies the standard macOS Edit menu, so WebKit text and secure fields receive copy-and-paste shortcuts. While no Workspace exists, a document-end bridge intercepts the otherwise inert add/select/new-session controls and opens `NSOpenPanel`; the selected directory is adopted through the loopback-only `workspace.create` API, after which the unchanged web client reloads into its normal Workspace flow. The bridge handles only this empty-state bootstrap and does not replace established Workspace navigation.
 

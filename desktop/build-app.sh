@@ -24,6 +24,7 @@ swiftc \
   -o "$contents/MacOS/DeepSeekHarness"
 
 cp "$project_root/desktop/Info.plist" "$contents/Info.plist"
+cp "$project_root/desktop/Assets/AppIcon.icns" "$resources/AppIcon.icns"
 cp "$(command -v node)" "$resources/node"
 strip -x "$resources/node"
 gzip -9 "$resources/node"

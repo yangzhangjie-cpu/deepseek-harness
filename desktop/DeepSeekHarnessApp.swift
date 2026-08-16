@@ -23,6 +23,16 @@ private struct GitHubRelease: Decodable {
     }
 }
 
+private final class WindowDragView: NSView {
+    override func mouseDown(with event: NSEvent) {
+        if event.clickCount == 2 {
+            window?.performZoom(nil)
+        } else {
+            window?.performDrag(with: event)
+        }
+    }
+}
+
 final class DeepSeekHarnessApp: NSObject, NSApplicationDelegate, WKNavigationDelegate, WKScriptMessageHandler {
     private var window: NSWindow!
     private var webView: WKWebView!
@@ -100,6 +110,23 @@ final class DeepSeekHarnessApp: NSObject, NSApplicationDelegate, WKNavigationDel
         webView.navigationDelegate = self
         webView.setValue(false, forKey: "drawsBackground")
 
+        let contentView = NSView()
+        let dragView = WindowDragView()
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        dragView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(webView)
+        contentView.addSubview(dragView)
+        NSLayoutConstraint.activate([
+            webView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            webView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            webView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            webView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            dragView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 240),
+            dragView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -88),
+            dragView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            dragView.heightAnchor.constraint(equalToConstant: 32),
+        ])
+
         window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 1440, height: 900),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
@@ -109,7 +136,7 @@ final class DeepSeekHarnessApp: NSObject, NSApplicationDelegate, WKNavigationDel
         window.title = "DeepSeek Harness"
         window.titlebarAppearsTransparent = true
         window.minSize = NSSize(width: 980, height: 640)
-        window.contentView = webView
+        window.contentView = contentView
         window.center()
         window.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)

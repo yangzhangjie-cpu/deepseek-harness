@@ -2,5 +2,5 @@
 # side as of the last confirmed-consistent state. Both languages carry equal authority;
 # after editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write .agents/notes/implemented/feature/2026-08-15-desktop-app-api-balance.md
-2026-08-15-desktop-app-api-balance.md: 5a8b9a854e77beaac08325a697898aeb5efe4117
-2026-08-15-desktop-app-api-balance.zh.md: e9483b650453f7f0e1a0cea2e5777856e68b0231
+2026-08-15-desktop-app-api-balance.md: 14db7887c7688386d7a51054eb96515425661c84
+2026-08-15-desktop-app-api-balance.zh.md: 15d03301bb6a9c03b6547c064fe16397fa9cfb82
